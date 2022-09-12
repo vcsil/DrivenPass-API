@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { createCard } from '../controllers/cardController';
+import { createCard, getAllCards } from '../controllers/cardController';
 import validateSchema from '../middlewares/schemaValidationMiddleware';
 import { checkAuthMiddleware } from '../middlewares/authMiddleware';
 
@@ -14,6 +14,11 @@ cardRouter.post(
   '/card', 
   validateSchema(cardSchema, 'body'), 
   createCard,
+);
+
+cardRouter.get(
+  '/card',
+  getAllCards,
 );
 
 export default cardRouter;

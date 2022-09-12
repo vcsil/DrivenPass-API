@@ -14,3 +14,9 @@ export async function insertCard(userId: number, card: ICardBasic) {
     data: { ...card, userId },
   });
 }
+
+export async function getAllCards(userId: number): Promise<Card[]> {
+  return prisma.card.findMany({
+    where: { userId },
+  });
+}
