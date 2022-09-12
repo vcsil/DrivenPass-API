@@ -15,3 +15,9 @@ export async function findUserByEmail(emailObj: IEmail): Promise<User | null> {
 export async function insertUser(userData: IAuth) {
   return prisma.user.create({ data: userData });
 }
+
+export async function findUserById(id: number) {
+  return prisma.user.findUnique({
+    where: { id },
+  });
+}

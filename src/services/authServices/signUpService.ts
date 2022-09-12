@@ -5,9 +5,9 @@ import { IEmail, IAuth } from '../../types/authTypes';
 import * as userRepository from '../../repositories/userRepository';
 
 async function checkEmail(emailObj: IEmail) {
-  const emailExiste = await userRepository.findUserByEmail(emailObj);
+  const emailExists = await userRepository.findUserByEmail(emailObj);
 
-  if (emailExiste) throw { code: 'Bad Request', message: 'Email already used' };
+  if (emailExists) throw { code: 'Bad Request', message: 'Email already used' };
 
   return; 
 }
