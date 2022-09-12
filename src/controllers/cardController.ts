@@ -20,4 +20,12 @@ export async function getAllCards(req: Request, res: Response) {
 
   return res.send(cards);
 }
+
+export async function getCard(req: Request, res: Response) {
+  const { user } = res.locals;
+  const cardId = parseInt(req.params.id);
   
+  const card = await getCardService.getCard(user.id, cardId);
+
+  return res.send(card);
+}

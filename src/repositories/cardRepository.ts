@@ -20,3 +20,13 @@ export async function getAllCards(userId: number): Promise<Card[]> {
     where: { userId },
   });
 }
+
+export async function getCard(userId: number, cardId: number): Promise<Card | null> {
+  return prisma.card.findFirst({
+    where: {
+      userId,
+      id: cardId,
+    },
+  });
+}
+
