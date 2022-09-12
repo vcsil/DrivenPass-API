@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { createCard, getAllCards, getCard } from '../controllers/cardController';
+import { createCard, deleteCard, getAllCards, getCard } from '../controllers/cardController';
 import validateSchema from '../middlewares/schemaValidationMiddleware';
 import { checkAuthMiddleware } from '../middlewares/authMiddleware';
 

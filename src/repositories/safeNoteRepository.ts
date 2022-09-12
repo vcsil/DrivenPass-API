@@ -1,5 +1,6 @@
 import { SafeNote } from '@prisma/client';
-import { ISafeNoteBasic } from 'types/safeNoteTypes';
+
+import { ISafeNoteBasic } from '../types/safeNoteTypes';
 import { prisma } from '../database/database';
 
 export async function getSafeNoteByTitle(userId: number, title: string): Promise<SafeNote | null> {
