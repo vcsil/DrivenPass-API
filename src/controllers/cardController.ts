@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 
 import * as createCardService from '../services/cardServices/createCardService';
+import * as deleteCardService from '../services/cardServices/deleteCardService';
 import * as getCardService from '../services/cardServices/getCardService';
 import { ICardBasic } from '../types/cardTypes';
 
@@ -28,4 +29,13 @@ export async function getCard(req: Request, res: Response) {
   const card = await getCardService.getCard(user.id, cardId);
 
   return res.send(card);
+}
+
+export async function deleteCard(req: Request, res: Response) {
+  const { user } = res.locals;
+  const cardId = parseInt(req.params.id);
+
+  await deleteCardService.deleteCard(user, cardId);
+
+  res.sendStatus(200);
 }

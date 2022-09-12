@@ -25,7 +25,10 @@ cardRouter.get(
   '/card/:id',
   getCard,
 );
-
-
+  
+cardRouter.delete(
+  '/card/:id', 
+  deleteCard,
+);
 
 export default cardRouter;

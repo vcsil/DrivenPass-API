@@ -30,3 +30,6 @@ export async function getCard(userId: number, cardId: number): Promise<Card | nu
   });
 }
 
+export async function deleteCard(id: number) {
+  return prisma.card.delete({ where: { id } });
+}
