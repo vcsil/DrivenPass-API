@@ -27,3 +27,7 @@ export async function getCredential(userId: number, credencialId: number) {
     },
   });
 }
+
+export async function deleteCredential(id: number) {
+  return prisma.credential.delete({ where: { id } });
+}

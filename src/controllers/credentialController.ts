@@ -5,6 +5,7 @@ import { Request, Response } from 'express';
 import { ICredentialBasic } from '../types/credentialTypes';
 import * as createCredentialService from '../services/credentialServices/createCredentialService';
 import * as getCredentialService from '../services/credentialServices/getCredentialService';
+import * as deleteCredentialService from '../services/credentialServices/deleteCredentialService';
 
 export async function createCredential(req: Request, res: Response) {
   const { user } = res.locals;
@@ -31,5 +32,20 @@ export async function getCredential(req: Request, res: Response) {
   }
 
   const credential = await getCredentialService.getCredential(user.id, credentialId);
-  res.send(credential);
+  return res.send(credential);
+}
+
+export async function deleteCredential(req: Request, res: Response) {
+  const { user } = res.locals;
+
+  const credentialId = parseInt(req.params.id);
+  if (isNaN(credentialId)) {
+    throw { code: 'Unprocessable entity', message: 'Invalid value' };
+  }
+
+  await getCredentialService.getCredential(user.id, credentialId);
+
+  await deleteCredentialService.deleteCredential(credentialId);
+
+  return res.sendStatus(200);
 }
