@@ -17,6 +17,7 @@ model User {
 
   Credential Credential[]
   SafeNote   SafeNote[]
+  Card       Card[]
 
   @@map("users")
 }
@@ -45,4 +46,22 @@ model SafeNote {
 
   @@unique([title, userId])
   @@map("safeNotes")
+}
+
+model Card {
+  id             Int     @id @default(autoincrement())
+  title          String
+  number         String
+  cardName       String
+  securityCode   String
+  expirationDate String
+  password       String
+  isVirtual      Boolean
+  cardType       String
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  @@unique([title, userId])
+  @@map("cards")
 }
