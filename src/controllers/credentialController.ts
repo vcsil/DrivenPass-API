@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-throw-literal */
 import { Credential } from '@prisma/client';
 import { Request, Response } from 'express';
 
@@ -18,5 +19,17 @@ export async function getAllCredentials(req: Request, res: Response) {
   const { user } = res.locals;
   const credencials: Credential[] = await getCredentialService.getAllCredentials(user.id);
 
-  res.send(credencials);
+  return res.send(credencials);
+}
+
+export async function getCredential(req: Request, res: Response) {
+  const { user } = res.locals;
+  const credentialId = parseInt(req.params.id);
+
+  if (isNaN(credentialId)) {
+    throw { code: 'Unprocessable entity', message: 'Invalid value' };
+  }
+
+  const credential = await getCredentialService.getCredential(user.id, credentialId);
+  res.send(credential);
 }

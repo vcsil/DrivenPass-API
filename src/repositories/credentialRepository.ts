@@ -13,8 +13,17 @@ export async function insertCredential(userId: number, credential: ICredentialBa
   });
 }
 
-export async function getAll(userId: number) {
+export async function getAllCredentials(userId: number) {
   return prisma.credential.findMany({
     where: { userId },
+  });
+}
+
+export async function getCredential(userId: number, credencialId: number) {
+  return prisma.credential.findFirst({
+    where: {
+      userId,
+      id: credencialId,
+    },
   });
 }
