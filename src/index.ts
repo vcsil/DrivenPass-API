@@ -13,6 +13,7 @@ const server = express();
 
 server.use(json());
 server.use(cors());
+server.get('/', (req, res) => {res.send('oiiiii');});
 server.use(router);
 server.use(errorHandler);
 

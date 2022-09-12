@@ -2,13 +2,13 @@ import { Router } from 'express';
 
 import { createCard, deleteCard, getAllCards, getCard } from '../controllers/cardController';
 import validateSchema from '../middlewares/schemaValidationMiddleware';
-import { checkAuthMiddleware } from '../middlewares/authMiddleware';
+// import { checkAuthMiddleware } from '../middlewares/authMiddleware';
 
 import { cardSchema } from '../schemas/cardSchema';
 
 const cardRouter = Router();
 
-cardRouter.use(checkAuthMiddleware);
+// cardRouter.use(checkAuthMiddleware);
 
 cardRouter.post(
   '/card', 
