@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { checkAuthMiddleware } from '../middlewares/authMiddleware';
+// import { checkAuthMiddleware } from '../middlewares/authMiddleware';
 
 import authRouter from './authRouter';
 import cardRouter from './cardRouter';
@@ -11,7 +11,7 @@ const router = Router();
 
 router.use(authRouter);
 
-router.use(checkAuthMiddleware);
+// router.use(checkAuthMiddleware);
 
 router.use(credentialRouter);
 router.use(safeNoteRouter);
